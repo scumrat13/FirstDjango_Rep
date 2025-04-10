@@ -9,9 +9,6 @@ items = [
    {"id": 8, "name": "Кепка" ,"quantity":124},
 ]
 
-for item in items:
-    print
-
 user_info = {
     "first_name": "Иван",
     "middle_name": "Петрович",
@@ -37,6 +34,7 @@ def about(request):
     )
     
 def item_info(request, item_id):
+    back_to_item_list = f'<br> <a href="/items"> Обратно к списку товаров </a>'
     item = None
     for i in items:
         if i['id'] == item_id:
@@ -44,9 +42,17 @@ def item_info(request, item_id):
             break
     if item:
         return HttpResponse(
-            (f'<h1>{item["name"]}</h1><h2>Количество: {item["quantity"]}</h2>')
+            f'<h1>{item["name"]}</h1><h2>Количество: {item["quantity"]}</h2>{back_to_item_list}'
         )
     else:
         return HttpResponse(
-            f'<h1>Товар с id={item_id} не найден' 
+            f'<h1>Товар с id={item_id} не найден</h1> {back_to_item_list}' 
         )
+    
+def all_items(request):
+    items_info = '<ol>'
+    for item in items:
+        items_info+= f'<li>{item["name"]}. <a href="/item/{item["id"]}/" target="_blank"> Страница товара</a></li>'
+    items_info += '</ol>'
+
+    return HttpResponse(items_info)
