@@ -9,7 +9,7 @@ items = [
    {"id": 8, "name": "Кепка" ,"quantity":124},
 ]
 
-user_info = {
+author_info = {
     "first_name": "Иван",
     "middle_name": "Петрович",
     "last_name": "Иванов",
@@ -26,11 +26,11 @@ def home(request):
 
 def about(request):
     return HttpResponse(
-        f'Имя: {user_info["first_name"]}<br>'
-        f'Отчество: {user_info["middle_name"]}<br>'
-        f'Фамилия: {user_info["last_name"]}<br>'
-        f'Телефон: {user_info["phone"]}<br>'
-        f'Email: {user_info["email"]}'
+        f'Имя: <b>{author_info["first_name"]}</b><br>'
+        f'Отчество: <b>{author_info["middle_name"]}</b><br>'
+        f'Фамилия: <b>{author_info["last_name"]}</b><br>'
+        f'Телефон: <b>{author_info["phone"]}</b><br>'
+        f'Email: <b>{author_info["email"]}</b>'
     )
     
 def item_info(request, item_id):
