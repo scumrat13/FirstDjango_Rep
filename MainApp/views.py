@@ -9,14 +9,6 @@ items = [
    {"id": 8, "name": "Кепка" ,"quantity":124},
 ]
 
-author_info = {
-    "first_name": "Иван",
-    "middle_name": "Петрович",
-    "last_name": "Иванов",
-    "phone": "8-923-600-01-02",
-    "email": "vasya@mail.ru"
-}
-
 def home(request):
     context = {
         "name": "Привет Приветович",
@@ -25,13 +17,14 @@ def home(request):
     return render(request, "index.html", context)
 
 def about(request):
-    return HttpResponse(
-        f'Имя: <b>{author_info["first_name"]}</b><br>'
-        f'Отчество: <b>{author_info["middle_name"]}</b><br>'
-        f'Фамилия: <b>{author_info["last_name"]}</b><br>'
-        f'Телефон: <b>{author_info["phone"]}</b><br>'
-        f'Email: <b>{author_info["email"]}</b>'
-    )
+    context= {
+    "first_name": "Иван",
+    "middle_name": "Петрович",
+    "last_name": "Иванов",
+    "phone": "8-923-600-01-02",
+    "email": "vasya@mail.ru"
+    }
+    return render(request, "about.html", context)
     
 def item_info(request, item_id):
     item = None
