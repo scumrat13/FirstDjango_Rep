@@ -18,12 +18,11 @@ author_info = {
 }
 
 def home(request):
-    # text = """
-    # <h1>"Изучаем django"</h1>
-    # <strong>Автор</strong>: <i>Привет Приветович</i>
-    # """
-    # return HttpResponse(text)
-    return render(request, "index.html")
+    context = {
+        "name": "Привет Приветович",
+        "email": "privet@mail.pr"
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     return HttpResponse(
