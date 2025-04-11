@@ -34,25 +34,22 @@ def about(request):
     )
     
 def item_info(request, item_id):
-    back_to_item_list = f'<br> <a href="/items"> Обратно к списку товаров </a>'
     item = None
     for i in items:
         if i['id'] == item_id:
             item = i
             break
     if item:
-        return HttpResponse(
-            f'<h1>{item["name"]}</h1><h2>Количество: {item["quantity"]}</h2>{back_to_item_list}'
-        )
-    else:
-        return HttpResponse(
-            f'<h1>Товар с id={item_id} не найден</h1> {back_to_item_list}' 
-        )
+        context = {
+            "item_name": item["name"],
+            "item_quantity": item["quantity"]
+        }
+        return render(request, "item.html", context)
+    return HttpResponse(f'<h2>Товар с id={item_id} не найден</h2> <br> <a href="/items"> Обратно к списку товаров </a>')
+
     
 def all_items(request):
-    items_info = '<ol>'
-    for item in items:
-        items_info+= f'<li>{item["name"]}. <a href="/item/{item["id"]}/" target="_blank"> Страница товара</a></li>'
-    items_info += '</ol>'
-
-    return HttpResponse(items_info)
+    context = {
+        "items": items
+    }
+    return render(request, "items_list.html", context)
