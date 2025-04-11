@@ -26,7 +26,7 @@ def about(request):
     }
     return render(request, "about.html", context)
     
-def item_info(request, item_id):
+def item_info(request, item_id:int):
     item = None
     for i in items:
         if i['id'] == item_id:
