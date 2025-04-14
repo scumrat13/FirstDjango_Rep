@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+</head>
+<body>
+    <header> 
+        <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> 
+    </header>
+    <h2>Полный список товаров</h2>
+    {% comment %} Я неправильно понял задание, поэтому "товар отсутствует" добавил и сюда {% endcomment %}
+        <ol>
+            {% for item in items %}
+                {% if item.quantity <= 0 %}
+                <a href= /item/{{ item.id }}><li>{{ item.name }}. Количество: товар отсутствует</a></li>
+                {% else %}
+                <a href= /item/{{ item.id }}><li>{{ item.name }}. Количество: {{ item.quantity }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ol>
+</body>
+</html>
