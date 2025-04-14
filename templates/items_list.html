@@ -13,12 +13,13 @@
     {% comment %} Я неправильно понял задание, поэтому "товар отсутствует" добавил и сюда {% endcomment %}
         <ol>
             {% for item in items %}
-                {% if item.quantity <= 0 %}
-                <a href= /item/{{ item.id }}><li>{{ item.name }}. Количество: товар отсутствует</a></li>
+                {% if item.count <= 0 %}
+                <a href= /item/{{ item.id }}><li>{{ item.name }} {{ item.brand }}. Количество: товар отсутствует</a></li>
                 {% else %}
-                <a href= /item/{{ item.id }}><li>{{ item.name }}. Количество: {{ item.quantity }}</a></li>
+                <a href= /item/{{ item.id }}><li>{{ item.name }} {{ item.brand }}. Количество: {{ item.count }}</a></li>
                 {% endif %}
             {% endfor %}
         </ol>
+
 </body>
 </html>
