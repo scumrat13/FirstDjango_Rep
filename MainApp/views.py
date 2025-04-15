@@ -32,7 +32,8 @@ def item_info(request, item_id:int):
         item = Item.objects.get(id=item_id)
         context = {
             "item_name": item.name,
-            "item_count": item.count
+            "item_count": item.count,
+            "item_brand": item.brand
         }
         return render(request, "item.html", context)
     except Item.DoesNotExist:

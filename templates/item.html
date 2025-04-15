@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Страница товара "{{item_name}}"</title>
+    <title>"{{ item_name }}"</title>
 </head>
 
 <body>
@@ -11,10 +11,11 @@
     <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> 
 </header>
 <h1> Страница товара: {{ item_name }} <h1>
+    <h2> Бренд: {{ item_brand }} </h2>
     {% if item_count <= 0 %}
-        <h2>Количество: Товар отсутствует <h2>
+        <h3>Количество: Товара нет на складе <h3>
     {% else %}
-        <h2> Количество: {{ item_count }} <h2>
+        <h3> Количество: {{ item_count }} <h3>
     {% endif %}
 <p>
     <a href="/items">Обратно к списку товаров</a>
