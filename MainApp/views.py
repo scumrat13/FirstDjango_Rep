@@ -28,20 +28,15 @@ def about(request):
     return render(request, "about.html", context)
     
 def item_info(request, item_id:int):
-    # Почитать про .get, это избавит от перебора 
-    items = Item.objects.all()
-    item = None
-    for i in items:
-        if i.id == item_id:
-            item = i
-            break
-    if item:
+    try:
+        item = Item.objects.get(id=item_id)
         context = {
             "item_name": item.name,
             "item_count": item.count
         }
         return render(request, "item.html", context)
-    return HttpResponse(f'<h2>Товар с id={item_id} не найден</h2> <br> <a href="/items"> Обратно к списку товаров </a>')
+    except Item.DoesNotExist:
+        return HttpResponse(f'<h2>Товар с id={item_id} не найден</h2> <br> <a href="/items"> Обратно к списку товаров </a>')
 
     
 def all_items(request):
