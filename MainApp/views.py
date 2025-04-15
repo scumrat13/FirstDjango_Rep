@@ -23,10 +23,15 @@ def about(request):
 def item_info(request, item_id:int):
     try:
         item = Item.objects.get(id=item_id)
+        color_list = []
+        if item.colors.exists():
+            for color in item.colors.all():
+                color_list.append(color.name)
         context = {
             "item_name": item.name,
             "item_count": item.count,
-            "item_brand": item.brand
+            "item_brand": item.brand,
+            "item_colors": color_list
         }
         return render(request, "item.html", context)
     except Item.DoesNotExist:

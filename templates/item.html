@@ -6,13 +6,22 @@
 
 {% block content %}
     {{ block.super }}
-<h1> Страница товара: {{ item_name }} <h1>
+    <h1> Страница товара: {{ item_name }} </h1>
     <h2> Бренд: {{ item_brand }} </h2>
     {% if item_count <= 0 %}
-        <h3>Количество: Товара нет на складе <h3>
+        <h3>Количество: Товара нет на складе </h3>
     {% else %}
-        <h3> Количество: {{ item_count }} <h3>
+        <h3> Количество: {{ item_count }} </h3>
     {% endif %}
+    <p>
+    {% for color in item_colors %}
+            <ul>
+                <li>
+                    {{ color }}
+                </li>
+            </ul>
+    {% endfor %}
+    </p>
 <p>
     <a href="{% url "items_list" %}">Обратно к списку товаров</a>
 </p>
