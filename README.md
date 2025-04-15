@@ -16,6 +16,16 @@
 
 1. python manage.py shell_plus --ipython 
 
+## Выгрузка и загрузка данных БД
+
+### Выгрузить данные из БД
+
+1. python manage.py dumpdata MainApp --indent 4 > ./fixtures/items.json
+
+### Загрузить данные в БД
+
+1. python manage.py loaddata ./fixtures/items.json
+
 ## Дополнительно
 
 1. Полезное дополнение для шаблонов 'Django':
