@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+
 {% block style %}
     {{ block.super }}
     <link rel="stylesheet" href="{% static "css/style.css" %}">
@@ -16,11 +17,11 @@
     <div class="items">
         {% for item in items %}
             <div class="item">
-                <a href= /item/{{ item.id }}> 
+                <a href= {% url "item_info" item.id %}> 
                 <p>{{ item.name }}</p>
                 <p> Бренд: {{ item.brand }}</p>
                 <p> Описание: <br> {{ item.description }}</p>
-                </a>    
+                </a>
             </div> 
         {% endfor %}
     </div>

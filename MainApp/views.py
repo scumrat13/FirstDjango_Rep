@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from MainApp.models import Item
 
+
 def home(request):
     context = {
         "name": "Привет Приветович",
