@@ -4,22 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Items</title>
+    <style>
+        .main_cont {
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap
+        }
+        .item_cont {
+            margin: 10px;
+            width: 320px;
+            padding: 15px;
+            border: 1px solid;
+            background: #eee
+        }
+        a {
+            text-decoration: none;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header> 
         <a href="/">Home</a> / <a href="/items">Items</a> / <a href="/about">About</a> 
     </header>
     <h2>Полный список товаров</h2>
-    {% comment %} Я неправильно понял задание, поэтому "товар отсутствует" добавил и сюда {% endcomment %}
-        <ol>
-            {% for item in items %}
-                {% if item.count <= 0 %}
-                <a href= /item/{{ item.id }}><li>{{ item.name }} {{ item.brand }}. Количество: товар отсутствует</a></li>
-                {% else %}
-                <a href= /item/{{ item.id }}><li>{{ item.name }} {{ item.brand }}. Количество: {{ item.count }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ol>
-
+    <div class="main_cont">
+        {% for item in items %}
+        <a href= /item/{{ item.id }}> <div class="item_cont">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.brand }}</p>
+            <p>{{ item.description }}</p>
+        </div> <a>
+        {% endfor %}
+    </div>
 </body>
 </html>
