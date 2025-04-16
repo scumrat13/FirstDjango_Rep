@@ -5,19 +5,19 @@
 {% endblock %}
 
 {% block content %}
-    {{ block.super }}
-    <h1> Страница товара: {{ item_name }} </h1>
-    <h2> Бренд: {{ item_brand }} </h2>
-    {% if item_count <= 0 %}
+    {{ block.super }}  
+    <h1> Страница товара: {{ item.name }} </h1>
+    <h2> Бренд: {{ item.brand }} </h2>
+    {% if item.count <= 0 %}
         <h3>Количество: Товара нет на складе </h3>
     {% else %}
-        <h3> Количество: {{ item_count }} </h3>
+        <h3> Количество: {{ item.count }} </h3>
     {% endif %}
     <p>
-    {% for color in item_colors %}
+    {% for color in item.colors.all %}
             <ul style="list-style-type: square;">
-                <li li style="color: {{ color }}">
-                    <span style="color: black">{{ color }}
+                <li li style="color: {{ color.name }}">
+                    <span style="color: black">{{ color.name }}
                 </li>
             </ul>
     {% endfor %}
